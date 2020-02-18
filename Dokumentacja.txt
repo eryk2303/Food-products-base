@@ -1,0 +1,70 @@
+Eryk Wawrzyn Grupa E1
+
+
+Podstawy Programowania – projekt dokumentacja projektu 
+
+Temat: Baza produktów spożywczych
+Algorytm rozwiązania zadania 
+    Do rozwiązania zadania wykorzystano metodę sortowania „bubble sort”  polega na porównywaniu dwóch kolejnych elementów i zamianie ich kolejności, jeżeli zaburza ona porządek, w jakim się sortuje listę. Sortowanie kończy się, gdy podczas kolejnego przejścia nie dokonano żadnej zmiany. 
+Algorytm działania dla listy jednokierunkowej
+Dane wejściowe P (wskaźnik na pierwszy element listy)
+{
+        it = wskaźnik na pierwszy element listy
+        do
+           A = 0
+           for( ;drugi elementy od it; następny element listy it)
+            if(cena naspenego elemenu it  jest większa niż cena drugiego elementu od it)
+            { 
+               A = 1
+               tmp = drugi elementy od it
+               drugi elementy od it = trzeci element od it
+               następny element tmp = następny element it
+               następny element it = tmp
+            }while A = 1
+}
+
+
+
+Struktury danych
+enum Rodzaj{OWOC=1, WARZYWO, MIESO, NABIAL};
+struct Produkty
+{
+    char* nazwa;
+    enum Rodzaj rodzaj;
+    float cena;
+    struct Produkty* nastepny;
+
+};
+
+Struktura przechowuje następujące dane: nazwę produktu (char* nazwa), kategorie produktu do której należy (enum Rodzaj rodzaj), cenę obiektu (float cena) oraz wskaźnik na następny element listy.
+
+Podział na funkcje
+
+- Produkty* dodaj_produkt(Produkty* pierwszy_produkt)
+
+Funkcja tworzy nowy element bazy typu struct Produkty, w polach struktury wpisujemy: nazwę produktu (char* nazwa), kategorie produktu do której należy (enum Rodzaj rodzaj), cenę obiektu (float cena), dodaje ten produkt na początek listy Produkty* pierwszy_produkt i zwraca nową listę  dodanym elementem jako pierwszy.
+ 
+- void wypisz_1(Produkty* bierzacy_produkt)
+Funkcja wypisuje pojedynczy element listy, pobiera element „* bierzacy_produkt”
+a następnie wyświetla jego nazwę i cenę.
+- Produkty* Wypisz(Produkty* pierwszy_produkt)
+Funkcja pobiera wartość od użytkownika, która decyduje jaki rodzaj produktu zostanie wyświetlony (wszystkie, owoce, warzywa, mięso, nabiał), następnie na standardowe wyjścia wyprowadza pola: nazwę produktu (char* nazwa), cenę obiektu (float cena) kolejnych elementów listy, rozpoczynając od „pierwszy_produkt”.
+- int porownaj(Produkty* bierzacy_produkt, char nazwa_tymczasowa[])
+Podprogram służy do porównywania dwóch napisów (bierzacy_produkt->nazwa – element listy , nazwa_tymczasowa[] – wartość tymczasowa wprowadzany przez użytkownika), jeżeli są takie same funkcja zwraca „1” w przeciwnym wypadku „0”.
+- Produkty* Usun(Produkty* pierwszy_produkt)
+Funkcja służy do usuwania elementu bazy typu struct Produkty, program pobiera nazwę produktu który chcę usunąć a następnie funkcja „szuka”  element o takiej nazwie (funkcja wykorzystuje w tym celu podprogram int porownaj(Produkty* bierzacy_produkt, char nazwa_tymczasowa[])) jeżeli istnieje  usuwa i zwraca nową listę z usuniętym elementem.
+-  void Posortuj(Produkty* pierwszy_produkt)
+Funkcja wykorzystuje algorytm „bubble sort” w celu posortowania produktów od ceny najmniejszej do największej. 
+- void Szykaj_ceny(Produkty* pierwszy_produkt)
+Podprogram pobiera nazwę produktu a następnie „szuka” element o takiej nazwie (funkcja wykorzystuje w tym celu podprogram int porownaj(Produkty* bierzacy_produkt, char nazwa_tymczasowa[]))  jeżeli produkt o takiej nazwie istnieje program wyświetla nazwę i cenę tego elementu za pomocą funkcji void wypisz_1(Produkty* bierzacy_produkt).
+- void Edytuj(Produkty* pierwszy_produkt)
+Podprogram pobiera nazwę produktu a następnie „szuka” element o takiej nazwie (funkcja wykorzystuje w tym celu podprogram int porownaj(Produkty* bierzacy_produkt, char nazwa_tymczasowa[])) , jeżeli produkt o takiej nazwie istnieje, program pobiera wartość nowej ceny.
+- void Menu(Produkty* pierwszy_produkt)
+Podfunkcja wyświetla funkcje jakie użytkownik ma do wyboru, sprawdza czy lista „Produkty” jest pusta funkcja wyświetla tylko : 1 - Dodaj nowy produkt, 0 - Zakoncz program, w przeciwnym przypadku: 1 - Dodaj nowy produkt 2 - Wyswietl produkty 3 - Usun element 4 - Edytuj cene 5 - Wyszukaj cene produktu 6 - Sortowanie Produktow  0 - Zakoncz program.
+- int wprowadz(void)
+Podprogram pobiera liczbę od użytkownika a następnie zwraca ją do innej funkcji.
+- int main()
+Funkcja główna. Wywołuję wcześniej podane podfunkcje.
+Sposób testowania 
+Program był testowany dla wielu oraz różnych elementów bazy danych, po kolei zostały sprawdzone funkcje programu: „1 - Dodaj nowy produkt 2 - Wyswietl produkty 3 - Usun element 4 - Edytuj cene 5 - Wyszukaj cene produktu 6 - Sortowanie Produktow  0 - Zakoncz program”.
+

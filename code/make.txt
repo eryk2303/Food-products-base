@@ -1,0 +1,8 @@
+all: main.c Nagowek.o G這wne.o Dodatkowe.o
+gcc main.c Nagowek.o G這wne.o Dodatkowe.o - o program
+Nagowek.o: Nagowek.c
+gcc-c Nagowek.c -c - o Nagowek.o
+G這wne.o: G這wne.c
+gcc-c G這wne.c -c- o G這wne.o
+Dodatkowe.o: Dodatkowe.c
+gcc-c Dodatkowe.c -c- o Dodatkowe.o
